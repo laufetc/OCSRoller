@@ -1,0 +1,18 @@
+{
+  "name": "OCSRoller",
+  "version": "1.0.0",
+  "description": "Roller for OCS combat",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(git://github.com/laufetc/OCSRoller.git)"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Phil Lauffenburger",
+  "license": "na"
+}

@@ -1,0 +1,212 @@
+
+p {
+margin:0px;
+}
+form, table{
+
+width:100%;
+}
+.td_radio {
+background:rgba(0,0,0,0.7);
+text-shadow:none;
+color:white;
+}
+td {
+  text-align: center;
+  width: 50%;
+}
+.background_body{
+background:url('../img/IMG_0912.png') left center no-repeat;
+-webkit-background-size:cover;
+background-size:cover;
+}
+td, tr{
+  padding:15px;
+  border-radius:5px;
+}
+#roll_head{
+background:rgba(0,0,0,1);
+width:100%;
+height:auto;
+display:block;
+text-align:center;
+}
+#roller_cent{
+width:100%;
+display:block;
+margin-bottom:0px;
+clear:both;
+text-align:center;
+}
+.output_button {
+color:red;
+background-color:red;
+}
+
+.center {
+  margin-left:auto;
+  margin-right:auto;
+  margin-top : 100px; /*we need to fix this*/
+  border: black solid 1px;
+  background-color:clear;
+  width:70%;
+  height:100%;
+  overflow:hidden;
+  background:rgba(0,0,0,0.7);
+  border-radius:25px;
+}
+.right{
+width:50%;
+height:100%;
+float:right;
+text-align:right;
+display:inline-block;
+position:relative;
+}
+.left{
+width:50%;
+height:100%;
+float:left;
+text-align:left;
+display:inline-block;
+position:relative;
+}
+div.table_radio{
+width:5px;
+height:auto;
+float:left;
+}
+div.radio_text {
+width:100%;
+float:right;
+height:100%;
+margin-top:auto;
+margin-bottom:0em;
+font-family:comic;
+font-size: 25px;
+color:White;
+text-align:right;
+}
+.highlight{
+-webkit-box-shadow: 0 0 8px #FF0000;
+    -moz-box-shadow: 0 0 8px #FF0000;
+    box-shadow: 0 0 8px #FF0000;
+    cursor:pointer;
+}
+input[type="button"] {
+  background-color:black;
+  color:white;
+  font-family:Comic, serif;
+  font-size:24px;
+  font-family:Verdana sans-serif;
+  width:300px;
+  height:100px;
+}
+input {
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+.output_box{
+float:left;
+clear:left;
+display:block;
+bottom: 20px;
+border: black solid 1px;
+background:rgba(255,0,0,0.7);
+color:white;
+width:100%;
+margin-left:0;
+margin-right:auto;
+height:auto;
+font-size:25px;
+font-family:comic;
+}
+#attackDescription{
+width:auto;
+height:auto;
+}
+
+.text_form{
+display:block;
+clear:both;
+width:100%;
+text-shadow:none;
+color:white;
+font-size:25px;
+margin-top:5px;
+text-align:center;
+}
+#general_form{
+display:block;
+float:left;
+width:100%;
+text-shadow:none;
+color:white;
+font-size:25px;
+}
+input[name= "Login"] {
+  width:100px;
+  height:50px;
+}
+span {background-color:#ADEBAD;}
+
+body,html {
+  height:100%;
+  width:70%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.container{
+   position: absolute;
+   top: 50%;
+   margin-top: -200px;/* half of #content height*/
+   left: 0;
+   width: 100%;
+}
+.content {
+   width: 624px;
+   margin-left: auto;
+   margin-right: auto;
+   height: 395px;
+}
+.vertical_c {
+  position:relative;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.vertical_horiz_align {
+  vertical-align:200px;
+  height:400px;
+  width:70%;
+  background-color: clear;
+  border: black 5px solid;
+  box-shadow:10px 10px 5px black;
+   margin-left:auto;
+  margin-right:auto;
+  text-align:middle;
+  vertical-align:middle;
+}
+  .center div{
+    
+    display:inline-block;
+    vertical-align:center;
+    
+  }
+h1 {
+  text-align:center;
+  font-family:verdana;
+  font-size: 2em;
+  color:red;
+}
+h5{
+  margin-right:10px;
+  margin-left:auto;
+  text-align: right;
+  color:blue;
+  
+}
+
+
