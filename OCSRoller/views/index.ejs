@@ -1,0 +1,124 @@
+
+ <% include _header %>
+
+   
+    
+
+       
+ <div class="container">
+ 
+		  
+		  
+	   <div class="col-lg-6">
+		<div class="col-">
+            <h2> Combat Description</h2>
+		<form name="general" id="general">
+            <h3> Attack ID</h3>
+		<input type="text" name="attackID" value="" id="attackID" Placeholder="Attack ID" class="form-control">
+            <h3> Attack Description</h3>
+		<input type="text" name="attackDescription" value="" id="attackDescription" Placeholder="Attack Description" class="form-control">
+            <h3> Email</h3>
+		<input type="text" name="email" value="" id="email" Placeholder="Email" class="form-control">
+            <h3> 2nd Email</h3>
+		<input type="text" name="email2" value="" id="email2" Placeholder="Email2" class="form-control">
+		</form>
+	   
+		</div>
+		<div id="combat_output" class="container" style="width:100%">
+		</div>
+	  </div>
+     
+	  <div class="col-lg-6">
+	  <h2> Combat Details</h2>
+   <FORM NAME="frmOne" ACTION= "" METHOD="post"  width="100%" style="float:right">
+    <table>
+         <tr class="row"> 
+		 <td class="col-md-6" id="td_ec" style="background-color:rgba(0, 0, 0, 0.4)">
+		 <div class="radio_text" > 
+		 <div class="table_radio" >
+		 <INPUT id="radio_ec" TYPE="Radio" Name="terrainDensity" Value="Extremely_Close" >
+		</div>
+		Extremely Close 
+		</div>
+		 </td>
+        <td class="col-md-6" id="td_vc" style="background-color:rgba(222, 58, 87, 0.4)"> 
+		<div class="radio_text" >
+			<div class="table_radio" >
+				<INPUT id="radio_vc" TYPE="Radio" Name="terrainDensity" Value="Very_Close">
+		</div>
+				Very Close
+			</div>
+		</td>
+		</tr>
+        <tr class="row"> 
+		<td class="col-md-3" id="td_c" style="background-color:rgba(175, 138, 87, 0.4)">
+			<div class="radio_text" >
+			<div class="table_radio" >
+				<INPUT id="radio_c" TYPE="Radio" Name="terrainDensity" Value="Close"> 
+			</div>
+		Close
+		</div>
+		</td >
+         <td class="col-md-3" id="td_o" style="background-color:rgba(100, 154, 194, 0.4)">
+			<div class="radio_text" >		 
+				<div class="table_radio" >
+					<INPUT id="radio_o" TYPE="Radio" Name="terrainDensity" Value="Open">
+				</div>
+		 
+				Open
+			</div>
+		 </td>
+		 </tr>
+        </table>
+     <p> <span style=color:red ID="radio_error"></span>
+     
+         </FORM>
+		 <form name="overRun" action= "" method="post" >
+	 <div class="col-md-6" id="ra"  >
+	 Regular Attack 
+       <div class="table_radio" >
+	   
+         <input id= "radio_ra" type="radio" name="attackType" value="regularAttack" checked="checked">
+		 
+       </div>
+	   </div >
+	   <div class="col-md-6" id="oa" style="background-color:rgba(0, 0, 0, 0.4)">
+	   Overrun Attack
+	    <div class="table_radio"   >
+         <input id="radio_oa" type="radio" name="attackType" value="overrunAttack">
+		 
+       </div>
+	   </div>
+	   <span style=color:red id="email_error"></span>
+     </form>
+     <form name="odds" action= "" method="post" class="text_form" class="form-control">
+       <p>Attack Strength</p>
+       <p>
+         <input type="text" name="attackStrength" value="" id="attackStrength" Placeholder="Attack Strength" class="form-control"></p>
+         <p>Defense Strength</p>
+       <p>
+         <input type="text" name="defenseStrength" id="defenseStrength" value="" Placeholder="Defense Strength" class="form-control"></p>
+       <span style=color:red id="email_error"></span>
+     </form>
+         <form name="actionRating" action= "" method="post" class="text_form">
+       <p>
+       <p>Attacker Action Rating</p>
+         <input type="text" name="attackRating" value="" id="attackRating" Placeholder="Attacker Action Rating" class="form-control"></p>
+       <p>
+       <p>Defender Action Rating</p>
+         <input type="text" name="defenseRating" id="defenseRating" value="" Placeholder="Defender Action Rating" class="form-control"></p>
+       <span style=color:red id="_error"></span>
+     </form>
+			</div>
+			<div class="button">
+		<input id="roller" class="btn-lg btn-success btn" onclick="roll()" type="button" value="Roll" />
+		</div>
+     </div>
+	  <!-- /center -->
+     <footer>
+     </footer>
+   <!--/page -->
+
+     
+<% include _footer %>     
+
