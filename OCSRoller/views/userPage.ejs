@@ -1,0 +1,52 @@
+<% include _header %>
+<% if (currentUser) { %>
+<% if (user.username == currentUser.username) { %>
+   <a href="/editPage"><div class="btn btn-primary btn-block"> <h4>Edit Your Profile</h4> </div></a>
+<% } }  %>
+<h2><%= user.username %>'s Profile</h2>
+
+<div class="container-fluid ">
+    <div class="container-fluid">
+<div class="container col-xs-4">
+    <h3>User Name</h3>
+</div>
+<div class="container col-xs-8">
+    <h3><%= user.username %></h3>
+</div>
+    </div>
+    <div class="container-fluid">
+<div class="container col-xs-4">
+    <h3>Bio</h3>
+</div>
+<div class="container col-xs-8">
+    <% if (user.bio) { %>
+  <h3><%= user.bio %></h3>
+<% } %>
+    
+</div></div>
+    <div class="container-fluid">
+<div class="container col-xs-4">
+    <h3>Games Currently Playing:</h3>
+</div>
+<div class="container col-xs-8">
+    <% if (user.games) { %>
+  <h3><%= user.games %></h3>
+<% } %>
+</div>
+</div>
+</div>
+
+     <div class="container">
+    <form action="/emailUser/<%= user.username %>" method="post" id="full" >
+        <h2>Want to Play a Game with me? Send an Email!</h2>
+       
+        <input type="submit" value="Email" class="btn btn-primary btn-block">
+    </form>
+     </div>
+
+
+
+
+
+
+<% include _footer %>

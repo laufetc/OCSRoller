@@ -8,6 +8,7 @@ var session=require("express-session");
 var passport=require("passport");
 var logger=require("morgan");
 
+
 var setUpPassport = require("./setuppassport");
 var routes = require("./routes");
 //require("./public/js/roll");
@@ -25,8 +26,11 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
+//app.use('static', express.static('public'));
+
 app.use(bodyParser.urlencoded({ extended: false }));   
-app.use(cookieParser()); 
+app.use(cookieParser('secret')); 
+app.use(session({cookie: { maxAge: 60000 }}));
 
 app.use(session({                                      
   secret: "TKRv0IJs=HYqrvagQ#&!F!%V]Ww/4KiVs$s,<<MX",  
@@ -45,3 +49,8 @@ app.use(routes);
 app.listen(app.get("port"), function() {
   console.log("Server started on port " + app.get("port"));
 });
+
+
+
+
+

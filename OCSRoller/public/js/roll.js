@@ -560,11 +560,11 @@
 console.log(combatResult)
 //Just so the user sees the "right" column, not the numerically correct one
 var combatColumnForReturn = correctedColumn + 1;
-	  var combatName=document.general.attackID.value;
-	  var combatdesc=document.general.attackDescription.value;
-	  var email1=document.general.email.value;
-	  var email2=document.general.email2.value;
-	  document.getElementById("combat_output").innerHTML= ("<p>"+combatName+ "</p> <p>" +combatdesc+ "</p> <p> Email logs of this combat have been sent to:" + email1 + " and " + email2 +"</p> <p>The results of this combat:" + combatResult + "</p>" + "<p>The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain </p>" + " <p> The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "</p>" + "<p>The combat die roll result was " + combatRoll + "</p>"+"<p> The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table </p>");
+	  var combatName=document.getElementById('attackID').value;
+	  var combatdesc=document.getElementById('attackDescription').value;
+	  var email1=document.getElementById('email').value;
+	  var email2=document.getElementById('email2').value;
+	  document.getElementById("combat_output").value= ("<p>"+combatName+ "</p> <p>" +combatdesc+ "</p> <p> Email logs of this combat have been sent to:" + email1 + " and " + email2 +"</p> <p>The results of this combat:" + combatResult + "</p>" + "<p>The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain </p>" + " <p> The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "</p>" + "<p>The combat die roll result was " + combatRoll + "</p>"+"<p> The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table </p>");
 	  
 };
 
