@@ -4,7 +4,7 @@
    
     
 
-       
+       <form action="/email" method="post" id="full" >
  <div class="container">
  
 		  
@@ -18,13 +18,14 @@
             <h3> Attack Description</h3>
 		<input type="text" name="attackDescription" value="" id="attackDescription" Placeholder="Attack Description" class="form-control">
             <h3> Email</h3>
-		<input type="text" name="email" value="" id="email" Placeholder="Email" class="form-control">
+		<input type="text" name="email" value="lauffenp@gmail.com" id="email" Placeholder="Email" class="form-control">
             <h3> 2nd Email</h3>
-		<input type="text" name="email2" value="" id="email2" Placeholder="Email2" class="form-control">
+		<input type="text" name="email2" value="lauffenp@gmail.com" id="email2" Placeholder="Email2" class="form-control">
 		</form>
 	   
 		</div>
-		<div id="combat_output" class="container" style="width:100%">
+		<div  class="container" style="width:100%">
+            <input value="" name="combat_output" id="combat_output" readonly>
 		</div>
 	  </div>
      
@@ -70,7 +71,7 @@
 		 </td>
 		 </tr>
         </table>
-     <p> <span style=color:red ID="radio_error"></span>
+      <span style=color:red ID="radio_error"></span>
      
          </FORM>
 		 <form name="overRun" action= "" method="post" >
@@ -113,7 +114,12 @@
 			<div class="button">
 		<input id="roller" class="btn-lg btn-success btn" onclick="roll()" type="button" value="Roll" />
 		</div>
+
+<!--    <div id="email" class="btn-lg btn-success btn" href="/email" type="button" value="email" />-->
+    <input type="submit" value="Email" class="btn btn-primary btn-block">
      </div>
+</form>
+
 	  <!-- /center -->
      <footer>
      </footer>
