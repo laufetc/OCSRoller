@@ -19,6 +19,10 @@ h2 {
     text-align: center;
     color:red;
 }
+
+h4 {
+    color:black;
+}
 div.button{
     text-align:center; 
     clear:both; 
@@ -27,19 +31,26 @@ div.button{
     width:50%;
     margin-left:auto;
     margin-right:auto;
-/*    background-color:rgba(0,0,0,0.7);*/
+  background-color:rgba(0,0,0,1);
     padding:1em;
     border-radius:5px;
 }
 body{
-color:white;
-background:url('../img/IMG_0912.png') left center no-repeat;
+    background:url('../img/IMG_0912.png')center no-repeat;
 -webkit-background-size:cover;
 background-size:cover;
+background-color:rgba(0,0,0,1);
+    color:white;
 }
-/*p {
-margin:0px;
+
+html{
+ height:100%; 
+
 }
+form {
+color:white;
+}
+/*
 form, table{
 
 width:100%;
