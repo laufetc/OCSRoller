@@ -1,45 +1,47 @@
 
     function roll() {
+//        var moment=require("moment");
      //attack and defense strength validation and value selection
-      if(document.getElementById("attackStrength").value==""){
-        document.getElementById("attackStrength").style.backgroundColor='red';
-      }
-      if(document.getElementById("defenseStrength").value==""){
-      document.getElementById("defenseStrength").style.backgroundColor='red';
-      }
+//      if(document.getElementById("attackStrength").value==""){
+//        document.getElementById("attackStrength").style.backgroundColor='red';
+//      }
+//      if(document.getElementById("defenseStrength").value==""){
+//      document.getElementById("defenseStrength").style.backgroundColor='red';
+//      }
       var attackStrength = document.odds.attackStrength.value;
       var defenseStrength = document.odds.defenseStrength.value;
       
-      //attack and defense action rating validation and value selection
-      if(document.getElementById("attackRating").value==""){
-        document.getElementById("attackRating").style.backgroundColor='red';
-      }
-      if(document.getElementById("defenseRating").value==""){
-      document.getElementById("defenseRating").style.backgroundColor='red';
-      }
+//      //attack and defense action rating validation and value selection
+//      if(document.getElementById("attackRating").value==""){
+//        document.getElementById("attackRating").style.backgroundColor='red';
+//      }
+//      if(document.getElementById("defenseRating").value==""){
+//      document.getElementById("defenseRating").style.backgroundColor='red';
+//      }
       var attackRating = document.actionRating.attackRating.value;
       var defenseRating = document.actionRating.defenseRating.value;
       
       //terrain Density validation and value selection
-      var terrainDensity = "";
-         var len = document.frmOne.terrainDensity.length;
-      console.log(len);
- var i;
-      for (i=0;i<len;i++){
-        if (document.frmOne.terrainDensity[i].checked){
-          terrainDensity= document.frmOne.terrainDensity[i].value;
-          break;
-        }
-      }
-      
-      if (terrainDensity==""){
-        document.getElementById("radio_error").innerHTML = "No Terrain Density Selected";
-        //return false;
-      }
-      else {
-        document.getElementById("radio_error").innerHTML = "";
-        //return true;
-      }
+        var terrainDensity = document.getElementById("terrainDensity").value;
+//      var terrainDensity = "";
+//         var len = document.frmOne.terrainDensity.length;
+//      console.log(len);
+// var i;
+//      for (i=0;i<len;i++){
+//        if (document.frmOne.terrainDensity[i].checked){
+//          terrainDensity= document.frmOne.terrainDensity[i].value;
+//          break;
+//        }
+//      }
+//      
+//      if (terrainDensity==""){
+//        document.getElementById("radio_error").innerHTML = "No Terrain Density Selected";
+//        //return false;
+//      }
+//      else {
+//        document.getElementById("radio_error").innerHTML = "";
+//        //return true;
+//      }
       //determine raw odds
       var rawOdds= attackStrength/defenseStrength;
       var roundDownOdds=Math.floor(rawOdds);
@@ -48,14 +50,21 @@
       var drm=attackRating-defenseRating;
       //this section determines attack type and therefore surprise type
       var surpriseType= "";
-      var len = document.overRun.attackType.length;
- var i;
-      for (i=0;i<len;i++){
-        if (document.overRun.attackType[i].checked){
-          surpriseType= document.overRun.attackType[i].value;
-          break;
-        }
-      }
+        if (document.getElementById("overRun").value == ra ) {
+            surpriseType="regularAttack"
+        } else {
+            surpriseType= "overRunAttack"
+        };
+        
+            
+//      var len = document.overRun.attackType.length;
+// var i;
+//      for (i=0;i<len;i++){
+//        if (document.overRun.attackType[i].checked){
+//          surpriseType= document.overRun.attackType[i].value;
+//          break;
+//        }
+//      }
       //determine if surprise occurs... this needs some doublechecking probably
       var surpriseRoll=Math.floor(1+(12*Math.random()))+drm;
       
@@ -82,7 +91,7 @@
       console.log(surpriseRoll)
       console.log(surpriseColumnShift);
       //build combat table (better way to do this?)
-       var ra= [ "AL2", "AL1o1", "AL1o1 Do1", "AL1 Do1", "Ao1 Do1", "Ao1 DL1o1", "Ao1 e4 DL1o2", "Ae4 DL1o2", "Ae3 DL2o2DG", "Ae2 DL2o3DG"];
+       var ra= [ "AL2", "AL1Ao1", "AL1Ao1 Do1", "AL1 Do1", "Ao1 Do1", "Ao1 DL1Do1", "Ao1 Ae4 DL1Do2", "Ae4 DL1Do2", "Ae3 DL2Do2DG", "Ae2 DL2Do3DG"];
             var columnLength=15;
       //oddscolumn1
             var oddsColumn1 = [];
@@ -561,14 +570,72 @@ console.log(combatResult)
 //Just so the user sees the "right" column, not the numerically correct one
 var combatColumnForReturn = correctedColumn + 1;
 	  var combatName=document.getElementById('attackID').value;
-	  var combatdesc=document.getElementById('attackDescription').value;
+	  var combatDesc=document.getElementById('attackDescription').value;
 	  var email1=document.getElementById('email').value;
 	  var email2=document.getElementById('email2').value;
-	  document.getElementById("combat_output").value= ("<p>"+combatName+ "</p> <p>" +combatdesc+ "</p> <p> Email logs of this combat have been sent to:" + email1 + " and " + email2 +"</p> <p>The results of this combat:" + combatResult + "</p>" + "<p>The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain </p>" + " <p> The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "</p>" + "<p>The combat die roll result was " + combatRoll + "</p>"+"<p> The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table </p>");
-	  
-};
+        var countAL1 = countResult(combatResult, "AL1");
+        var countAL2 = countResult(combatResult, "AL2");
+         var countDL1 = countResult(combatResult, "DL1");
+         var countDL2 = countResult(combatResult, "DL2");
+         var countAo1 = countResult(combatResult, "Ao1");
+         var countAo2 = countResult(combatResult, "Ao2");
+         var countDo1 = countResult(combatResult, "Do1");
+          var countDo2 = countResult(combatResult, "Do2");
+          var countDo3 = countResult(combatResult, "Do3");
+          var countAe2 = countResult(combatResult, "Ae2");
+          var countAe3 = countResult(combatResult, "Ae3");
+          var countAe4 = countResult(combatResult, "Ae4");
+        
+//        var now=moment().format();
+      newRoll= {
+          
+    "rollTitle": combatName,
+    "rollDesc": combatDesc,
+    "attackType":surpriseType,
+    "terrainType":terrainDensity,
+    "attackStrength":attackStrength,
+    "attackCR":attackRating,
+    "defenseStrength": defenseStrength,
+    "defenseCR": defenseRating,
+    "turnNum" :document.getElementById('turn').value,
+    "rawDie" :combatResult,
+    "AL1" : countAL1,
+    "AL2" : countAL2,
+    "Ao1" : countAo1,
+    "Ao2" : countAo2,     
+    "DL1" : countDL1,
+    "DL2" : countDL2,
+    "Do1" : countDo1,
+    "Do2" : countDo2,
+    "Do3" : countDo3,
+    "Ae2" : countAe2,
+    "Ae3" : countAe3,
+    "Ae4" : countAe4,     
+//    createdOn:now  
+      }
+//  currentAttack=newRoll;
+         
+//            $("#attack_info").load("/dynamic/attackResults.ejs");
+        $("#combat_output").text(combatName+ "" +combatDesc+ " Email logs of this combat have been sent to:" + email1 + " and " + email2 +"The results of this combat:" + combatResult + "The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain " + " The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "The combat die roll result was " + combatRoll + " The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table ") 
+        console.log(JSON.stringify(newRoll));
+        document.getElementById("combatOutputJSON").value=JSON.stringify(newRoll);
+        console.log(document.getElementById("combatOutputJSON").value)
+        
+        
+//        $("#combat_output").text(+combatName+ "" +combatDesc+ " Email logs of this combat have been sent to:" + email1 + " and " + email2 +"The results of this combat:" + combatResult + "The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain " + " The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "The combat die roll result was " + combatRoll + " The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table ");
+    
+//	  document.getElementById("combat_output").text()= ("<p>"+combatName+ "</p> <p>" +combatDesc+ "</p> <p> Email logs of this combat have been sent to:" + email1 + " and " + email2 +"</p> <p>The results of this combat:" + combatResult + "</p>" + "<p>The odds were " + rawOdds+ ":1 in " + terrainDensity + " terrain </p>" + " <p> The drm-modified surprise roll was " + surpriseRoll + " with a resulting column shift of " + surpriseColumnShift + "</p>" + "<p>The combat die roll result was " + combatRoll + "</p>"+"<p> The drm was " + drm  + " Resulting in a modified roll of " + correctedDieRoll + " on the " + combatColumnForReturn + " column of the Combat Results Table </p>");
+//        callback();
+        return newRoll;
+//};
 
 // module.exports = roll;
  /*jquery*/
- 
- 
+// 
+ function countResult(input, query) {
+    var count = new RegExp(query, "gi")
+     return (input.match(count) || []).length;
+ };
+        
+    }
+//   module.exports=roll();  

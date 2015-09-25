@@ -4,8 +4,8 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title> Roll</title>
-    ￼<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-
+<!--    ￼<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>-->
+  <link rel="stylesheet" href= "https://bootswatch.com/slate/bootstrap.min.css"/>
 <link type="text/css" rel="stylesheet" href="/css/stylesheet.css"/>
     <script  src="/js/jquery-1.11.1.min.js">
  </script>
@@ -15,7 +15,7 @@
     </head>
     <body style="font-size:25px">
         <div class="container">
-   <div class="header">
+   <div id="bcg_header" class="header">
        
 
        <div class="nav">
@@ -32,28 +32,34 @@
        <a href="/" > Roll </a>
                 </li>
            <li role="presentation">
-           <a href="/logout"> Logout </a>
+           <a href="/newGame"> New Game </a>
            </li>
-           
            <li role="presentation">
            <a href="/userList"> User List </a>
            </li>
+           <li role="presentation">
+           <a href="/logout"> Logout </a>
+           </li>
            
+           <% if (currentGame) { %>
+           <li role="presentation">
+           <%= newGame %>
+           </li>
+           <% } %>
            <% } else { %>
            <li role="presentation">       
        <a href="/" > Roll </a>
                 </li>
            <li role="presentation">
-           <a href="/login"> Login </a>
+                <a href="/login"> Login </a>
            </li>
            <li role="presentation">
-           <a href="/signup"> Signup </a>
+                <a href="/signup"> Signup </a>
            </li>
            
            <li role="presentation">
-           <a href="/userList"> User List </a>
+                <a href="/userList"> User List </a>
            </li>
-           
            <% } %>
           
            </ul>

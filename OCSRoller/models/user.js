@@ -2,12 +2,51 @@ var mongoose= require("mongoose");
 var bcrypt = require("bcrypt-nodejs");
 var SALT_FACTOR = 10;
 
+//var moment=require("moment");
+
+var rollObjSchema = mongoose.Schema ({
+    rollTitle: "String",
+    rollDesc: "String",
+    attackType:"String",
+    terrainType:"String",
+    attackStrength:Number,
+    attackCR:Number,
+    defenseStrength: Number,
+    defenseCR: Number,
+    turnNum:Number,
+    rawDie:Number,
+    AL1:Number,
+    AL2:Number,
+    Ao1:Number,
+    Ao2:Number,
+    DL1:Number,
+    DL2:Number,
+    Do1:Number,
+    Do2:Number,
+    Do3:Number,
+    Ae2:Number,
+    Ae3:Number,
+    Ae4:Number,
+    createdOn:"String"
+});
+
+var gameSchema = mongoose.Schema({
+    gameName: {type:String, required:true },
+    gameDescription: { type: String, required: true },
+    player1: { type: String, required: true },
+    player2: { type: String, required: true },
+    email1: { type: String, required: true },
+    email2: { type: String, required: true },
+    user1Rolls:[rollObjSchema],
+    user2Rolls:[rollObjSchema]
+});
+
 var userSchema = mongoose.Schema({
     username: {type:String, required:true, unique:true },
     password: { type: String, required: true },
     email: {type:String, required: true, unique:true },
     bio: String,
-    games: String 
+    games: [gameSchema] 
 });
 
 var noop = function() {};                                 

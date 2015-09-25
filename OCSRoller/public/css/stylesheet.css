@@ -1,9 +1,9 @@
 
 [class*="col-"] {
-    background-color: #eee;
-  background-color: rgba(0,0,0,.5);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+/*    background-color: #eee;*/
+/*  background-color: rgba(0,0,0,.5);*/
+/*  border: 1px solid #ddd;*/
+/*  border: 1px solid rgba(86,61,124,.2);*/
 }
 h1 {
   font-size: 72px;
@@ -31,15 +31,19 @@ div.button{
     width:50%;
     margin-left:auto;
     margin-right:auto;
-  background-color:rgba(0,0,0,1);
+/*  background-color:rgba(0,0,0,1);*/
     padding:1em;
     border-radius:5px;
 }
+#bcg_header {
+    background:url('../img/IMG_0912.png')center center no-repeat;
+    background-size:cover;
+}
 body{
-    background:url('../img/IMG_0912.png')center no-repeat;
--webkit-background-size:cover;
-background-size:cover;
-background-color:rgba(0,0,0,1);
+   
+/*-webkit-background-size:cover;*/
+
+/*background-color:rgba(0,0,0,1);*/
     color:white;
 }
 

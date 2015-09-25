@@ -1,0 +1,17 @@
+<% include _header %>
+
+<h2> Sign Up</h2>
+<form action="/newGameCreate" method="post">
+    <input name="gameName" type="text" class="form-control" placeholder="Game Name"
+      required autofocus>
+    <input name="gameDescription" type="text" class="form-control" placeholder="Game Description"
+      required autofocus>
+
+    <input name="user2" type="text" class="form-control" placeholder="Player 2 Name"
+      required autofocus>
+
+  <input type="submit" value="Sign up" class="btn btn-primary btn-block">
+</form>
+
+
+<% include _footer %>

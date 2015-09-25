@@ -11,9 +11,7 @@
     "type": "git",
     "url": "(git://github.com/laufetc/OCSRoller.git)"
   },
-  "keywords": [
-    "npm"
-  ],
+  "keywords": "npm",
   "author": "Phil Lauffenburger",
   "license": "na",
   "dependencies": {
@@ -25,6 +23,7 @@
     "express": "^4.8.5",
     "express-session": "^1.7.6",
     "mailgun": "^0.5.0",
+    "moment": "^2.10.6",
     "mongoose": "^4.0.0",
     "morgan": "^1.6.1",
     "multer": "^1.0.3",
@@ -33,6 +32,7 @@
     "passport-local": "^1.0.0"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.2",
+    "npm": "2.7.5"
   }
 }

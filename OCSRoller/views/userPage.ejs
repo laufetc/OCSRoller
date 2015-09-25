@@ -30,7 +30,9 @@
 </div>
 <div class="container col-xs-8">
     <% if (user.games) { %>
-  <h3><%= user.games %></h3>
+    <% for (i = 0;i <= user.games.length-1;i++){ %>
+    <a href = "/gamePage/<%= user.games[i].player1 %>/<%=user.games[i].gameName%>"><h3><%= user.games[i].gameName %></h3></a>
+    <% } %>
 <% } %>
 </div>
 </div>

@@ -1,19 +1,19 @@
 var express = require("express");
-
+app=express();
 var passport=require("passport")
 var Mailgun = require('mailgun').Mailgun;
 var mg = new Mailgun('key-e07b653f713a04cef459cfa084c0b7b6');
 
 var User = require("./models/user");
-var Game = require("./models/game");
+//var Game = require("./models/game");
 var router = express.Router();
-
+//var roll = require("./public/js/roll.js");
 //Flash messaging for authentication of user
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {                                    
     next();
   } else {
-    req.flash("info", "You must be logged in to see this page.");
+    req.flash("info", "Hey, you've got to be logged in to do that!");
     res.redirect("/login");
   }
 }
@@ -21,6 +21,8 @@ function ensureAuthenticated(req, res, next) {
 //parse data for use by router
 router.use(function(req,res,next) {
     res.locals.currentUser=req.user;
+    res.locals.newRoll=app.locals.newRoll;
+    res.locals.currentGame=req.Game;
     res.locals.errors=req.flash("error");
     res.locals.infos=req.flash("info");
     next();
@@ -34,6 +36,7 @@ router.get("/", function(req, res, next) {
     res.render("index", {users: users });
     });
 });
+
 
 //Roll result email post method
 router.post("/email", function(req,res) {
@@ -143,24 +146,130 @@ router.get("/userPage/:username",function (req, res, next) {
     });
 });
 
+//router.get("/gamepage/:username",function (req, res, next) {
+//    User.findOne({ username: req.params.username }, function(err, user) {
+//        if (err) {return next(err); }
+//        if(!user) {return next(404); }
+//        console.log(user);
+//        res.render("userPage", { user: user});
+//    });
+//});
+
 //User email post method
-router.post("/emailUser/:username", function(req,res) {
+router.post("/emailUser/:username", ensureAuthenticated, function(req,res,next) {
+    
     User.findOne({username:req.params.username}, function(err, user){
         
         console.log(user);
     console.log('email sent');
     var from = req.user.email;
-    console.log(from);
+    console.log(typeof from);
     var to = user.email;
-    console.log(to);
+    console.log(typeof to);
     var subject = "Whatsup, wanna play?";
     console.log(subject);
     var text = "Hey, I'd like to play a game with ya. Interested? Email me back";
     console.log(text);
-        mg.sendText( from, (to,from), subject, text, function(err){err && console.log(err) });
+        mg.sendText( from, to , subject, text, function(err){err && console.log(err) });
         req.flash('info', 'Email sent to user')
     res.redirect("/userList") 
     });
 });
+
+
+//New Game Page Render
+router.get("/newGame", ensureAuthenticated, function(req,res,next){
+    res.render("newGame");
+});
+    
+//New Game Post method
+router.post("/newGameCreate", function(req,res,next) {
+    var gameName= req.body.gameName;
+    var gameDescription= req.body.gameDescription;
+//    var user1= req.user.username;
+    var email1 = req.user.email;
+    var player2 = req.body.user2;
+  User.findOne({ username:player2 }, function(err, user) {
+      if (!user) {
+          return (err)
+      }
+      else {
+//          console.log(user)}})})
+         var email2=user.email;
+          console.log(user)
+         user.games.push({
+         gameName:gameName,
+        gameDescription:gameDescription,
+      player1: req.user.username,
+      player2: player2,
+        email1: email1,
+        email2: email2,
+         }); 
+          console.log(user.games);
+          user.save(function(err) {
+              if (err) {
+      next(err);
+return; }})
+       User.findOne({ username:req.user.username }, function(err, user) {   
+//           var email2=user.email;
+          console.log(user)
+         user.games.push({
+         gameName:gameName,
+        gameDescription:gameDescription,
+      player1: req.user.username,
+      player2: player2,
+        email1: email1,
+        email2: email2,
+         }); 
+//          console.log(user.games);
+          user.save(function(err) {
+              if (err) {
+      next(err);
+return; }})
+       });
+                    
+                    
+    req.flash('info', 'New Game Created')
+ res.redirect("/");
+          }
+      });
+  
+});
+      
+router.get("/gamePage/:username/:gamename", function(req,res, next){
+    User.findOne({ username:req.params.username }, function(err, user) {
+        console.log(user);
+       var thisGameName = req.params.gamename;
+        console.log(thisGameName);
+        var thisGame = user.games.filter(function( obj ) {
+  return obj.gameName == thisGameName;
+});
+//        var thisGame = user.games;
+        console.log(thisGame);
+           res.render("gamePage",{game:thisGame})
+      
+    });
+});
+//new Attack post method
+router.post("/submitAttack", function(req,res) {
+//router.post("/submit", function(req,res) {
+//    console.log(req.body.newRoll);
+//    res.redirect("/"
+//        app.locals.newRoll=req.body;
+//    console.log(newRoll);
+//        sess=req.session;
+//    console.log(req.body);
+    
+ var newRoll=JSON.parse(req.body.combatOutputJSON);
+    console.log(newRoll);
+//console.log(sess.newRoll.rawDie);
+    res.redirect("/");     
+//    createdOn:now  
+      
+
+});
+function callbackRoll() {
+    console.log('here I am');
+}
 //Export this gold shiny unicorn magic
 module.exports = router;

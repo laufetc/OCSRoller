@@ -1,0 +1,77 @@
+<div class="container col-xs-12">
+<!--     <form action="/submitAttack" method="post">-->
+<!--       <form action="/email" method="post" id="full" >-->
+		  
+            <h2> Combat Description</h2>
+    <input class="form-control col-xs-4" type="text" name="turn" id="turn" value="" placeholder="Turn Number">
+	   <div class="container col-xs-6">
+		
+		<form name="general" id="general">
+<!--            <h3> Attack ID</h3>-->
+		<input type="text" name="attackID" value="" id="attackID" Placeholder="Attack ID" class="form-control col-xs-12">
+<!--            <h3> Attack Description</h3>-->
+		<input type="text" name="attackDescription" value="" id="attackDescription" Placeholder="Attack Description" class="form-control">
+<!--            <h3> Attack Email</h3>-->
+		<input type="text" name="email" value="lauffenp@gmail.com" id="email" Placeholder="Email" class="form-control">
+<!--            <h3>Defense Email</h3>-->
+		<input type="text" name="email2" value="lauffenp@gmail.com" id="email2" Placeholder="Email2" class="form-control">
+
+		</div>
+	  <div class=" container col-xs-6">
+<!--	  <h2> Combat Details</h2>-->
+          <select name="terrainDensity" id="terrainDensity">
+              <option id = "ec" name= "ec">Extremely Close</option>
+              <option id = "vc" name= "vc">Very Close</option>
+              <option id = "c" name= "c">Close</option>
+              <option id = "o" name= "o">Open</option>
+</select>
+          
+       
+		 <form name="overRun" action= "" method="post" >
+             <select name="overRun" id="overRun">
+                <option id = "ra" name= "ra">Regular Attack</option>
+                <option id = "oa" name= "oa">Overrun Attack</option>
+             </select>
+	
+     </form>
+     <form name="odds" action= "" method="post" class="text_form" class="form-control">
+<!--       <p>Attack Strength</p>-->
+<!--       <p>-->
+         <input type="text" name="attackStrength" value="" id="attackStrength" Placeholder="Attack Strength" class="form-control">
+<!--         </p>-->
+<!--         <p>Defense Strength</p>-->
+<!--       <p>-->
+         <input type="text" name="defenseStrength" id="defenseStrength" value="" Placeholder="Defense Strength" class="form-control">
+<!--         </p>-->
+     </form>
+         <form name="actionRating" action= "" method="post" class="text_form">
+<!--       <p>-->
+<!--       <p>Attacker Action Rating</p>-->
+         <input type="text" name="attackRating" value="" id="attackRating" Placeholder="Attacker Action Rating" class="form-control">
+<!--             </p>-->
+<!--       <p>-->
+<!--       <p>Defender Action Rating</p>-->
+         <input type="text" name="defenseRating" id="defenseRating" value="" Placeholder="Defender Action Rating" class="form-control">
+<!--             </p>-->
+           
+     </form>
+			</div>
+
+			
+               
+		
+		
+                </form>
+      <form action="/submitAttack"  method="Post">
+<div  class="container col-xs-12" id="combat_output_holder" style="width:100%;color:white;"></div>
+    <input id="combatOutputJSON" name="combatOutputJSON" style="color:black" value= "" readonly hidden>
+           <button type="submit" name="submitAttack" style="background-color:rgba(0,0,0,0); border:none;"><input type=""  onclick="rollinit()" id="roller"  class="btn-lg btn-danger btn"  value="Roll" name="roll"/></button>
+    
+ </form>
+<!--    <div id="email" class="btn-lg btn-success btn" href="/email" type="button" value="email" />-->
+<!--<form >-->
+<!--    <input type="submit" value="Email" class="btn btn-primary btn-block">-->
+<!--</form>    -->
+</div>
+
+

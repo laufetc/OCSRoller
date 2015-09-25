@@ -1,4 +1,20 @@
 </div>
 </body>
+
+<script type="text/javascript">
+ function clearCurrentAttack(){
+  currentAttack=[];
+     $("p").empty()
+        $("#attack_info").load("/dynamic/newAttack.ejs");
+    }   
+   var newRoll= {}; 
+    //     $("#attack_info").load(roll(),"/dynamic/attackResults.ejs");
+ function rollinit() {
+        roll()
+//     window.open("/submitAttack", "_self");   
+ }
+ 
+
+</script>
 </html>
      
